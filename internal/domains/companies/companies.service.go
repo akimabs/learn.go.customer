@@ -19,7 +19,7 @@ func NewCompanyService(companyRepository interfaces.CompanyRepository) interface
 	}
 }
 
-func (s *CompanyServiceImpl) GetCompanies(ctx context.Context) (data models.Companies, err error) {
+func (s *CompanyServiceImpl) GetCompanies(ctx context.Context) (data models.Company, err error) {
 	data, err = s.companyRepository.GetCompanies(ctx)
 
 	if data.Name == "" {

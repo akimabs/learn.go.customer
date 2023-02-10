@@ -18,7 +18,7 @@ func NewCompanyRepository(db lib.Database) interfaces.CompanyRepository {
 	return companyRepository
 }
 
-func (r *companyRepositoryImpl) GetCompanies(ctx context.Context) (data models.Companies, err error) {
+func (r *companyRepositoryImpl) GetCompanies(ctx context.Context) (data models.Company, err error) {
 	err = r.DB.Table("company").Error
 	return
 }

@@ -4,7 +4,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type Features struct {
+type Feature struct {
 	gorm.Model
 	Id        string `gorm:"type:string" json:"id" validate:"required,string"`
 	Name      string `gorm:"type:string" json:"name" validate:"required,string"`

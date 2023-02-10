@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   db:
     container_name: pg
@@ -8,8 +8,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - '5432:5432'
-    volumes: 
+      - "5432:5432"
+    volumes:
       - db:/var/lib/postgresql/data
   web:
     container_name: web
@@ -17,12 +17,10 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - PORT=8080
-      - POSTGRES_HOST=db
-      - POSTGRES_PORT=5432
-      - POSTGRES_USERNAME=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DATABASE=postgres
+      - POSTGRES_DB=${POSTGRES_DATABASE}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_USER=${POSTGRES_USERNAME}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_SSL=disable
     ports:
       - 8080:8080

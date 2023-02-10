@@ -22,7 +22,7 @@ func NewCompanyRest(service interfaces.CompanyService) interfaces.CompaniesRest 
 func (ctl *CompanyRestImpl) GetCompanies(c echo.Context) error {
 	var (
 		err  error
-		data models.Companies
+		data models.Company
 		ctx  = c.Request().Context()
 	)
 

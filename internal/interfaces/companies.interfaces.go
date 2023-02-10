@@ -12,7 +12,7 @@ type CompaniesRest interface {
 }
 
 type CompanyService interface {
-	GetCompanies(ctx context.Context) (data models.Companies, err error)
+	GetCompanies(ctx context.Context) (data models.Company, err error)
 }
 
 type CompanyRoute interface {
@@ -20,5 +20,5 @@ type CompanyRoute interface {
 }
 
 type CompanyRepository interface {
-	GetCompanies(ctx context.Context) (data models.Companies, err error)
+	GetCompanies(ctx context.Context) (data models.Company, err error)
 }
