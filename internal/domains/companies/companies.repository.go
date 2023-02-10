@@ -19,6 +19,10 @@ func NewCompanyRepository(db lib.Database) interfaces.CompanyRepository {
 }
 
 func (r *companyRepositoryImpl) GetCompanies(ctx context.Context) (data models.Company, err error) {
-	err = r.DB.Table("company").Error
+	err = r.DB.Table("companies").
+		Select("name").
+		WithContext(ctx).
+		Find(&data).
+		Error
 	return
 }

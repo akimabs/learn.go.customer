@@ -4,9 +4,6 @@ import (
 	"context"
 	"customer/internal/interfaces"
 	"customer/internal/models"
-	"net/http"
-
-	"github.com/labstack/echo/v4"
 )
 
 type CompanyServiceImpl struct {
@@ -22,9 +19,9 @@ func NewCompanyService(companyRepository interfaces.CompanyRepository) interface
 func (s *CompanyServiceImpl) GetCompanies(ctx context.Context) (data models.Company, err error) {
 	data, err = s.companyRepository.GetCompanies(ctx)
 
-	if data.Name == "" {
-		err = echo.NewHTTPError(http.StatusNotFound, "Asdasd")
+	if data, err = s.GetCompanies(ctx); err != nil {
 		return
 	}
-	return
+
+	return s.companyRepository.GetCompanies(ctx)
 }

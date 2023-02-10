@@ -7,7 +7,7 @@ import (
 )
 
 type Repository interface {
-	// Transaction(f func(tx *gorm.DB) error) error
+	Transaction(f func(tx *gorm.DB) error) error
 }
 
 type RepositoryImpl struct {

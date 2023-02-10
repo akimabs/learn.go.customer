@@ -18,7 +18,7 @@ func NewCompanyRoute(echo lib.EchoHandler, rest interfaces.CompaniesRest) interf
 }
 
 func (r *CompaniesRouteImpl) Setup() {
-	companies := r.echo.Echo.Group("/companies")
+	companies := r.echo.Echo.Group("/company")
 	{
 		companies.GET("/", r.rest.GetCompanies)
 	}

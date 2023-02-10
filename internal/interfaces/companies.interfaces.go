@@ -20,5 +20,6 @@ type CompanyRoute interface {
 }
 
 type CompanyRepository interface {
+	Repository
 	GetCompanies(ctx context.Context) (data models.Company, err error)
 }
