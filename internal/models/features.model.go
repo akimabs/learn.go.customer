@@ -4,11 +4,18 @@ import (
 	"gorm.io/gorm"
 )
 
+type Status string
+
+const (
+	ACTIVE   Status = "ACTIVE"
+	INCATIVE Status = "INCATIVE"
+)
+
 type Feature struct {
 	gorm.Model
-	Id        string `gorm:"type:string" json:"id" validate:"required,string"`
+	ID        string `gorm:"type:string" json:"id" validate:"required,string"`
 	Name      string `gorm:"type:string" json:"name" validate:"required,string"`
-	Status    string `gorm:"type:enum('ACTIVE', 'INCATIVE')"`
+	Status    Status
 	CreatedAt string `gorm:"type:string" json:"createdAt" validate:"required,string"`
 	UpdatedAt string `gorm:"type:string" json:"updatedAt" validate:"required,string"`
 }

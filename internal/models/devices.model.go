@@ -6,8 +6,8 @@ import (
 
 type Device struct {
 	gorm.Model
-	Id               string `gorm:"type:string" json:"id" validate:"required,string"`
-	User             User   `gorm:"foreignKey:Device"`
+	ID               string `gorm:"type:string" json:"id" validate:"required,string"`
+	User             uint
 	DeviceId         string `gorm:"type:string" json:"deviceId" validate:"required,string"`
 	DeviceName       string `gorm:"type:string" json:"deviceName" validate:"required,string"`
 	DeviceType       string `gorm:"type:string" json:"deviceType" validate:"required,string"`

@@ -6,8 +6,8 @@ import (
 
 type Role struct {
 	gorm.Model
-	Id          string `gorm:"type:string" json:"id" validate:"required,string"`
-	User        []User `gorm:"foreignKey:Role"`
+	ID          string `gorm:"type:string" json:"id" validate:"required,string"`
+	User        []User `gorm:"foreignKey:Role;references:ID"`
 	Name        string `gorm:"type:string" json:"name" validate:"required,string"`
 	Description string `gorm:"type:string" json:"description" validate:"required,string"`
 	CreatedAt   string `gorm:"type:string" json:"createdAt" validate:"required,string"`

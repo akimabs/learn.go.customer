@@ -32,12 +32,12 @@ func NewDatabase() Database {
 	)
 
 	connection, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	connection.AutoMigrate(&models.Company{}, &models.Role{}, &models.User{}, &models.Device{}, &models.Feature{})
 
 	if err != nil {
 		fmt.Println(err)
 	}
 
+	connection.AutoMigrate(&models.Company{}, &models.User{}, &models.Role{}, &models.Device{}, &models.Feature{})
 	return Database{
 		DB: connection,
 	}
