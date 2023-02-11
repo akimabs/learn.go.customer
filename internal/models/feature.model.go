@@ -1,9 +1,5 @@
 package models
 
-import (
-	"gorm.io/gorm"
-)
-
 type Status string
 
 const (
@@ -12,10 +8,7 @@ const (
 )
 
 type Feature struct {
-	gorm.Model
-	ID        string `gorm:"type:string" json:"id" validate:"required,string"`
-	Name      string `gorm:"type:string" json:"name" validate:"required,string"`
-	Status    Status
-	CreatedAt string `gorm:"type:string" json:"createdAt" validate:"required,string"`
-	UpdatedAt string `gorm:"type:string" json:"updatedAt" validate:"required,string"`
+	BaseModel
+	Name   string `gorm:"type:string" json:"name" validate:"required,string"`
+	Status Status
 }

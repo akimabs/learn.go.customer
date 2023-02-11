@@ -19,6 +19,7 @@ func NewCompanyRest(service interfaces.CompanyService) interfaces.CompaniesRest 
 }
 
 func (ctl *CompanyRestImpl) GetCompanies(c echo.Context) error {
+
 	var (
 		err  error
 		data models.Company
@@ -33,5 +34,31 @@ func (ctl *CompanyRestImpl) GetCompanies(c echo.Context) error {
 		Code:    http.StatusOK,
 		Message: "SUCCESS",
 		Data:    data,
+	})
+}
+
+func (ctl *CompanyRestImpl) PostCompanies(c echo.Context) error {
+	var (
+		err error
+		ctx = c.Request().Context()
+	)
+
+	bodies := new(models.Company)
+
+	if err = c.Bind(bodies); err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+
+	if err = ctl.service.PostCompanies(ctx, &models.Company{
+		Name:        bodies.Name,
+		Description: bodies.Description,
+	}); err != nil {
+		return err
+	}
+
+	return c.JSON(http.StatusOK, models.GenericRes{
+		Code:    http.StatusOK,
+		Message: "SUCCESS",
+		Data:    bodies,
 	})
 }

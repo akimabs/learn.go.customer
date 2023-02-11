@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"customer/internal/domains/companies"
+	companies "customer/internal/domains/company"
 	"customer/internal/interfaces"
 	"customer/internal/lib"
 	"customer/internal/middlewares"
@@ -30,7 +30,7 @@ func bootstrap(
 	lifecycle.Append(
 		fx.Hook{
 			OnStart: func(context.Context) error {
-				conn.SetMaxIdleConns(10)
+				conn.SetMaxIdleConns(4)
 				conn.SetMaxOpenConns(100)
 				conn.SetConnMaxLifetime(time.Hour)
 

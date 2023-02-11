@@ -9,10 +9,12 @@ import (
 
 type CompaniesRest interface {
 	GetCompanies(echo.Context) error
+	PostCompanies(echo.Context) error
 }
 
 type CompanyService interface {
 	GetCompanies(ctx context.Context) (data models.Company, err error)
+	PostCompanies(ctx context.Context, bodies *models.Company) (err error)
 }
 
 type CompanyRoute interface {
@@ -22,4 +24,10 @@ type CompanyRoute interface {
 type CompanyRepository interface {
 	Repository
 	GetCompanies(ctx context.Context) (data models.Company, err error)
+	PostCompanies(ctx context.Context, bodies *models.Company) (err error)
+}
+
+type PostCompanyDTO struct {
+	Name        string
+	Description string
 }

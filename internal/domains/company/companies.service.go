@@ -17,11 +17,25 @@ func NewCompanyService(companyRepository interfaces.CompanyRepository) interface
 }
 
 func (s *CompanyServiceImpl) GetCompanies(ctx context.Context) (data models.Company, err error) {
-	data, err = s.companyRepository.GetCompanies(ctx)
+	// var (
+	// 	companies []models.Company
+	// )
 
-	if data, err = s.GetCompanies(ctx); err != nil {
+	if data, err = s.companyRepository.GetCompanies(ctx); err != nil {
 		return
 	}
 
-	return s.companyRepository.GetCompanies(ctx)
+	// if len(companies) == 0 {
+	// 	err = echo.NewHTTPError(http.StatusNotFound, "ACCOUNT_NOT_FOUND")
+	// 	return
+	// }
+
+	return
+}
+
+func (s *CompanyServiceImpl) PostCompanies(ctx context.Context, body *models.Company) (err error) {
+	return s.PostCompanies(ctx, &models.Company{
+		Name:        body.Name,
+		Description: body.Description,
+	})
 }
