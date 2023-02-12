@@ -33,9 +33,14 @@ func (s *CompanyServiceImpl) GetCompanies(ctx context.Context) (data models.Comp
 	return
 }
 
-func (s *CompanyServiceImpl) PostCompanies(ctx context.Context, body *models.Company) (err error) {
-	return s.PostCompanies(ctx, &models.Company{
+func (s *CompanyServiceImpl) PostCompanies(ctx context.Context, body *models.Company) error {
+	err := s.companyRepository.PostCompanies(ctx, &models.Company{
 		Name:        body.Name,
 		Description: body.Description,
 	})
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
