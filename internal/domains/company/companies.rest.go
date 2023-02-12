@@ -49,10 +49,7 @@ func (ctl *CompanyRestImpl) PostCompanies(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	if err = ctl.service.PostCompanies(ctx, &models.Company{
-		Name:        bodies.Name,
-		Description: bodies.Description,
-	}); err != nil {
+	if err = ctl.service.PostCompanies(ctx, bodies); err != nil {
 		return err
 	}
 
