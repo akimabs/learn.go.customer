@@ -5,7 +5,6 @@ import (
 	"customer/internal/interfaces"
 	"customer/internal/lib"
 	"customer/internal/models"
-	"fmt"
 )
 
 type companyRepositoryImpl struct {
@@ -27,12 +26,10 @@ func (r *companyRepositoryImpl) GetCompanies(ctx context.Context) (data models.C
 	return
 }
 
-func (r *companyRepositoryImpl) PostCompanies(ctx context.Context, bodies *models.Company) (err error) {
-	fmt.Println(bodies)
-	// err = r.DB.Table("companies").
-	// 	Select("name", "description").
-	// 	Create(&bodies).
-	// 	Error
+func (r *companyRepositoryImpl) PostCompanies(ctx context.Context, body *models.Company) (err error) {
+	err = r.DB.Table("companies").
+		Create(body).
+		Error
 
 	return
 }

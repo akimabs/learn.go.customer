@@ -6,7 +6,7 @@ type User struct {
 	Position string `gorm:"type:string" json:"position" validate:"required,string"`
 	Email    string `gorm:"type:string" json:"email" validate:"required,string"`
 	Password string `gorm:"type:string" json:"password" validate:"required,string"`
-	Company  uint
-	Role     uint
-	Device   []Device `gorm:"foreignKey:User;references:id"`
+	// Company  uuid.UUID
+	// Role   uint
+	// Device []Device `gorm:"foreignKey:User;references:id"`
 }
