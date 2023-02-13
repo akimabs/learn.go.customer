@@ -14,7 +14,7 @@ type companyRepositoryImpl struct {
 func NewCompanyRepository(db lib.Database) interfaces.CompanyRepository {
 	companyRepository := &companyRepositoryImpl{}
 	companyRepository.Database = db
-
+	// CompanyID = utils.GenerateId()
 	return companyRepository
 }
 
@@ -28,7 +28,7 @@ func (r *companyRepositoryImpl) GetCompanies(ctx context.Context) (data models.C
 
 func (r *companyRepositoryImpl) PostCompanies(ctx context.Context, body *models.Company) (err error) {
 	err = r.DB.Table("companies").
-		Create(body).
+		Create(&body).
 		Error
 
 	return
