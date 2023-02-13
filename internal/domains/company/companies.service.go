@@ -4,6 +4,7 @@ import (
 	"context"
 	"customer/internal/interfaces"
 	"customer/internal/models"
+	"customer/internal/utils"
 )
 
 type CompanyServiceImpl struct {
@@ -35,6 +36,7 @@ func (s *CompanyServiceImpl) GetCompanies(ctx context.Context) (data models.Comp
 
 func (s *CompanyServiceImpl) PostCompanies(ctx context.Context, body *models.Company) error {
 	err := s.companyRepository.PostCompanies(ctx, &models.Company{
+		ID:          utils.GenerateId(),
 		Name:        body.Name,
 		Description: body.Description,
 	})
