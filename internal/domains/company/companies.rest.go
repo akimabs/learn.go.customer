@@ -43,13 +43,13 @@ func (ctl *CompanyRestImpl) PostCompanies(c echo.Context) error {
 		ctx = c.Request().Context()
 	)
 
-	bodies := new(models.Company)
+	bodies := new(*models.Company)
 
 	if err = c.Bind(bodies); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	if err = ctl.service.PostCompanies(ctx, bodies); err != nil {
+	if err = ctl.service.PostCompanies(ctx, *bodies); err != nil {
 		return err
 	}
 
