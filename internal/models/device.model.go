@@ -2,7 +2,6 @@ package models
 
 type Device struct {
 	BaseModel
-	User             uint
 	DeviceId         string `gorm:"type:string" json:"deviceId" validate:"required,string"`
 	DeviceName       string `gorm:"type:string" json:"deviceName" validate:"required,string"`
 	DeviceType       string `gorm:"type:string" json:"deviceType" validate:"required,string"`
